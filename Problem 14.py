@@ -4,26 +4,26 @@ Ashley Piccone
 Euler Problem #14: Longest Collatz sequence
 """
 
-n = 13
-seq_len = 0
-start = 0
+def collatz_seq(n):
+    arr = []
+    while (n > 1):
+        if (n % 2 == 0):
+            n = n / 2
+        else:
+            n = 3*n + 1 
+        arr.append(n)
+    return len(arr) + 1
 
-#for i in range(1,n):
-#    j = i
-seq = []
-j = 3
-while (j >= 1):
-    if (j % 2 == 0):
-        seq.append(j/2)
-        j = j/2
-    else:
-        seq.append(3*j + 1)
-        j = 3*j + 1
-#if (len(seq) > seq_len):
-#    seq_len = len(seq)
-#    start = i
+print(collatz_seq(13))
 
-print(seq)
+max_length = 0
+num = 0
+for i in range(0,10**6):
+    if (collatz_seq(i) > max_length):
+        max_length = collatz_seq(i)
+        num = i
+
+print(num)
 
 
 
